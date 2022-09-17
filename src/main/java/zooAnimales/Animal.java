@@ -70,15 +70,26 @@ public class Animal extends Zona {
     }
 
     public String movimiento() {
-        return switch (this.getClass().getSimpleName()) {
-            case "Mamifero" -> "desplazarse";
-            case "Ave" -> "volar";
-            case "Reptil" -> "reptar";
-            case "Pez" -> "nadar";
-            case "Anfibio" -> "saltar";
-            default -> null;
-        };
-    }
+        switch (this.getClass().getSimpleName()) {
+            case "Mamifero":{
+                return "desplazarse";
+            }
+            case "Ave":{
+                return "volar";
+            }
+            case "Reptil":{
+                return "reptar";
+            }
+            case "Pez":{
+                return "nadar";
+            }
+            case "Anfibio":{
+                return "saltar";
+            }
+            default: {
+                return null;}
+            }
+        }
 
     public static String totalPorTipo() {
         return "Mamiferos: " + Mamifero.cantidadMamiferos() + "\n" +
