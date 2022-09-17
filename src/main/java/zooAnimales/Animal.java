@@ -12,7 +12,7 @@ public class Animal extends Zona {
     private Zona[] zona;
 
     public Animal() {
-
+        Animal.totalAnimales++;
     }
     public Animal(String nombre, int edad, String habitat, String genero) {
         this.nombre = nombre;
@@ -85,12 +85,12 @@ public class Animal extends Zona {
                 "Aves: " + Ave.cantidadAves() + "\n" +
                 "Reptiles: " + Reptil.cantidadReptiles() + "\n" +
                 "Peces: " + Pez.cantidadPeces() + "\n" +
-                "Anfibios" + Anfibio.cantidadAnfibios();
+                "Anfibios: " + Anfibio.cantidadAnfibios();
     }
 
     @Override
     public String toString() {
-        if (this.getZona()[0] != null) {
+        if (this.getZona() != null) {
             return "Mi nombre es " + this.getNombre() + ", tengo una edad de " + this.getEdad() +
                     ", habito en " + this.getHabitat() + " y mi genero es " + this.getGenero() +
                     ", la zona en la que me ubico es " + this.getZona()[0].getNombre() + ", en el zoo " +

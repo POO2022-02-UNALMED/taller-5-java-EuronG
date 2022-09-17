@@ -1,5 +1,7 @@
 package gestion;
 
+import zooAnimales.Mamifero;
+
 public class Zoologico {
     private String nombre;
     private String ubicacion;
@@ -38,17 +40,22 @@ public class Zoologico {
     }
 
     public void agregarZonas(Zona zona){
-        int n = getZona().length + 1;
-        Zona temp[] = new Zona[n];
-        for (int i = 0; i < n; i++) {
-            temp[i] = getZona()[i];
+        if (zonas==null) {
+            zonas = new Zona[1];
+            zonas[0] = zona;
+        } else {
+            int n = getZona().length + 1;
+            Zona[] temp = new Zona[n];
+            for (int i = 0; i < n - 1; i++) {
+                temp[i] = getZona()[i];
+            }
+            temp[n - 1] = zona;
+            this.zonas = temp;
         }
-        temp[n] = zona;
-        this.zonas = temp;
     }
     public int cantidadTotalAnimales() {
         int r = 0;
-        for (int i = 0; i <= getZona().length; i++) {
+        for (int i = 0; i < getZona().length; i++) {
             r += getZona()[i].cantidadAnimales();
         }
         return r;

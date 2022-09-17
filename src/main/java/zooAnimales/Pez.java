@@ -1,14 +1,28 @@
 package zooAnimales;
 
 public class Pez extends Animal{
-    private static Pez listado[];
+    private static Pez[] listado;
     public static int salmones;
     public static int bacalaos;
     private String colorEscamas;
     private int cantidadAletas;
 
-    public Pez() {}
+    public Pez() {
+        if (listado==null) {
+            listado = new Pez[1];
+            listado[0] = this;
+        } else {
+            int n = getListado().length + 1;
+            Pez[] temp = new Pez[n];
+            for (int i = 0; i < n-1; i++) {
+                temp[i] = getListado()[i];
+            }
+            temp[n-1] = this;
+            setListado(temp);
+        }
+    }
     public Pez(String nombre, int edad, String habitat, String genero, String colorEscamas, int cantidadAletas) {
+        this();
         this.setNombre(nombre);
         this.setEdad(edad);
         this.setHabitat(habitat);
@@ -58,7 +72,7 @@ public class Pez extends Animal{
     }
 
     public static int cantidadPeces() {
-        return salmones+bacalaos;
+        return getListado().length;
     }
 
     public static Pez crearSalmon(String nombre, int edad, String genero) {

@@ -6,8 +6,22 @@ public class Ave extends Animal{
     public static int aguilas;
     private String colorPlumas;
 
-    public Ave() {}
+    public Ave() {
+        if (listado==null) {
+            listado = new Ave[1];
+            listado[0] = this;
+        } else {
+            int n = getListado().length + 1;
+            Ave[] temp = new Ave[n];
+            for (int i = 0; i < n-1; i++) {
+                temp[i] = getListado()[i];
+            }
+            temp[n-1] = this;
+            setListado(temp);
+        }
+    }
     public Ave(String nombre, int edad, String habitat, String genero, String colorPlumas) {
+        this();
         this.setNombre(nombre);
         this.setEdad(edad);
         this.setHabitat(habitat);
@@ -48,7 +62,7 @@ public class Ave extends Animal{
     }
 
     public static int cantidadAves() {
-        return halcones + aguilas;
+        return getListado().length;
     }
 
     public static Ave crearHalcon(String nombre, int edad, String genero) {

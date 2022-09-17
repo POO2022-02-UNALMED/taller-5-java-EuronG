@@ -3,7 +3,7 @@ import zooAnimales.Animal;
 public class Zona extends Zoologico {
     private String nombre;
     private Zoologico[] zoo;
-    private static Animal[] animales;
+    private Animal[] animales;
 
     public Zona() {
 
@@ -43,13 +43,18 @@ public class Zona extends Zoologico {
 
 
     public void agregarAnimales(Animal animal){
-        int n = getAnimales().length + 1;
-        Animal temp[] = new Animal[n];
-        for (int i = 0; i < n; i++) {
-            temp[i] = getAnimales()[i];
+        if (animales==null) {
+            animales = new Animal[1];
+            animales[0] = animal;
+        } else {
+            int n = getAnimales().length + 1;
+            Animal[] temp = new Animal[n];
+            for (int i = 0; i < n - 1; i++) {
+                temp[i] = getAnimales()[i];
+            }
+            temp[n - 1] = animal;
+            this.animales = temp;
         }
-        temp[n] = animal;
-        Zona.animales = temp;
     }
 
     public int cantidadAnimales(){

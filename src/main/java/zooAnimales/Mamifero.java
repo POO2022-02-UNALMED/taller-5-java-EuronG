@@ -1,5 +1,7 @@
 package zooAnimales;
 
+import gestion.Zona;
+
 public class Mamifero extends Animal{
     private static Mamifero[] listado;
     public static int caballos;
@@ -7,8 +9,22 @@ public class Mamifero extends Animal{
     private boolean pelaje;
     int patas;
 
-    public Mamifero() {}
+    public Mamifero() {
+        if (listado==null) {
+            listado = new Mamifero[1];
+            listado[0] = this;
+        } else {
+            int n = getListado().length + 1;
+            Mamifero[] temp = new Mamifero[n];
+            for (int i = 0; i < n-1; i++) {
+                temp[i] = getListado()[i];
+            }
+            temp[n-1] = this;
+            setListado(temp);
+        }
+    }
     public Mamifero(String nombre, int edad, String habitat, String genero, boolean pelaje, int patas) {
+        this();
         this.setNombre(nombre);
         this.setEdad(edad);
         this.setHabitat(habitat);
@@ -54,7 +70,7 @@ public class Mamifero extends Animal{
     }
 
     public static int cantidadMamiferos() {
-        return caballos + leones;
+        return getListado().length;
     }
 
     public static Mamifero crearCaballo(String nombre, int edad, String genero) {
