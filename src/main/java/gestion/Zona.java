@@ -10,8 +10,10 @@ public class Zona extends Zoologico {
     }
     public Zona(String nombre, Zoologico zoo) {
         this.nombre = nombre;
+        this.zoo = new Zoologico[1];
         this.zoo[0] = zoo;
     }
+
 
     @Override
     public String getNombre() {
