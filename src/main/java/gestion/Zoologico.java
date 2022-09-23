@@ -31,13 +31,15 @@ public class Zoologico {
         return ubicacion;
     }
 
-    public void setZonas(Zona[] zonas) {
+    public void setZona(Zona[] zonas) {
         this.zonas = zonas;
     }
 
     public Zona[] getZona() {
         return zonas;
     }
+
+
 
     public void agregarZonas(Zona zona){
         if (zonas==null) {
