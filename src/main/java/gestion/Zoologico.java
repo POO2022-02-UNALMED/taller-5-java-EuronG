@@ -1,11 +1,11 @@
 package gestion;
 
-import zooAnimales.Mamifero;
+import java.util.ArrayList;
 
 public class Zoologico {
     private String nombre;
     private String ubicacion;
-    private Zona[] zonas;
+    private ArrayList<Zona> zonas;
 
     public Zoologico() {
 
@@ -31,34 +31,25 @@ public class Zoologico {
         return ubicacion;
     }
 
-    public void setZona(Zona[] zonas) {
+    public void setZona(ArrayList<Zona> zonas) {
         this.zonas = zonas;
     }
 
-    public Zona[] getZona() {
+    public ArrayList<Zona> getZona() {
         return zonas;
     }
 
 
 
     public void agregarZonas(Zona zona){
-        if (zonas==null) {
-            zonas = new Zona[1];
-            zonas[0] = zona;
-        } else {
-            int n = getZona().length + 1;
-            Zona[] temp = new Zona[n];
-            for (int i = 0; i < n - 1; i++) {
-                temp[i] = getZona()[i];
-            }
-            temp[n - 1] = zona;
-            this.zonas = temp;
-        }
+        if (zonas == null) {
+            zonas = new ArrayList<>(1);}
+        zonas.add(zona);
     }
     public int cantidadTotalAnimales() {
         int r = 0;
-        for (int i = 0; i < getZona().length; i++) {
-            r += getZona()[i].cantidadAnimales();
+        for (int i = 0; i < getZona().size(); i++) {
+            r += getZona().get(i).cantidadAnimales();
         }
         return r;
     }

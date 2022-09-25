@@ -3,13 +3,15 @@ package zooAnimales;
 import gestion.Zona;
 import gestion.Zoologico;
 
+import java.util.ArrayList;
+
 public class Animal extends Zona {
     private static int totalAnimales;
     private String nombre;
     private int edad;
     private String habitat;
     private String genero;
-    private Zona[] zona;
+    private ArrayList<Zona> zona;
 
     public Animal() {
         Animal.totalAnimales++;
@@ -61,11 +63,11 @@ public class Animal extends Zona {
         return genero;
     }
 
-    public Zona[] getZona() {
+    public ArrayList<Zona> getZona() {
         return zona;
     }
 
-    public void setZona(Zona[] zona) {
+    public void setZona(ArrayList<Zona> zona) {
         this.zona = zona;
     }
 
@@ -104,8 +106,8 @@ public class Animal extends Zona {
         if (this.getZona() != null) {
             return "Mi nombre es " + this.getNombre() + ", tengo una edad de " + this.getEdad() +
                     ", habito en " + this.getHabitat() + " y mi genero es " + this.getGenero() +
-                    ", la zona en la que me ubico es " + this.getZona()[0].getNombre() + ", en el zoo " +
-                    this.getZona()[0].getZoo().getNombre();
+                    ", la zona en la que me ubico es " + this.getZona().get(0).getNombre() + ", en el zoo " +
+                    this.getZona().get(0).getZoo().getNombre();
         } else {
             return "Mi nombre es " + this.getNombre() + ", tengo una edad de " + this.getEdad() +
                     ", habito en " + this.getHabitat() + " y mi genero es " + this.getGenero();
